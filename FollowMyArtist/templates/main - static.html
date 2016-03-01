@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+	  <title>Follow My Artist</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	  
+	  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+  
+  <style>
+  .jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
+  }
+  .container-fluid {
+      padding: 30px 50px;
+  }
+  .bg-grey {
+      background-color: #f6f6f6;
+  }
+	
+	
+  
+  .carousel-control.right, .carousel-control.left {
+	    background-image: none;
+	    color: #f4511e;
+	}
+	
+	.carousel-indicators li {
+	    border-color: #f4511e;
+	}
+	
+	.carousel-indicators li.active {
+	    background-color: #f4511e;
+	}
+	
+	.item h4 {
+	    font-size: 19px;
+	    line-height: 1.375em;
+	    font-weight: 400;
+	    font-style: italic;
+	    margin: 70px 0;
+	}
+	
+	.item span {
+	    font-style: normal;
+	}
+	
+	.slideanim {visibility:hidden;}
+	.slide {
+	    /* The name of the animation */
+	    animation-name: slide;
+	    -webkit-animation-name: slide; 
+	    /* The duration of the animation */
+	    animation-duration: 1s; 
+	    -webkit-animation-duration: 1s;
+	    /* Make the element visible */
+	    visibility: visible; 
+	}
+	
+	/* Go from 0% to 100% opacity (see-through) and specify the percentage from when to slide in the element along the Y-axis */
+	@keyframes slide {
+	    0% {
+	        opacity: 0;
+	        -webkit-transform: translateY(70%);
+	    } 
+	    100% {
+	        opacity: 1;
+	        -webkit-transform: translateY(0%);
+	    } 
+	}
+	@-webkit-keyframes slide {
+	    0% {
+	        opacity: 0;
+	        -webkit-transform: translateY(70%);
+	    } 
+	    100% {
+	        opacity: 1;
+	        -webkit-transform: translateY(0%);
+	    }
+	}
+	
+	
+	
+	.artist{
+		margin-left: 150px;
+	}
+  </style>
+</head>
+<body>
+
+<div class="jumbotron text-center">
+  <h1>Company</h1> 
+  <p>We specialize in blablabla</p> 
+</div>
+
+<!-- Container (About Section) -->
+<div class="container-fluid">
+	<div class="form-inline artist">
+		<h2>Find Your Artist</h2>
+		<input type="text" id="artist" class="form-control" size="30" placeholder="Artist Name"/>
+		<button class="btn btn-info ">Check</button>
+	</div>
+  
+</div>
+
+<div class="container-fluid bg-grey">
+	
+	<div class="row" >
+		<div class="col-sm-6">
+			<div class="row">
+				<input type="text" id="location" class="form-control" placeholder="Search for address or place"/>
+			</div>
+			<div class="row">
+				<label for="location-type">Select by:</label>
+				<select name="location-type" id="location-type">
+				  <option>Region</option>
+				  <option>Radius</option>
+				</select>
+				<div id="slider"></div>
+			</div>
+		</div>
+		<div class="col-sm-6">
+			<div id="map" style="height: 400px;"></div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	
+</div>
+
+<div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4 slideanim">
+      <span class="glyphicon glyphicon-globe logo"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2>
+      <h4><strong>MISSION:</strong> Our mission lorem ipsum..</h4>      
+      <p><strong>VISION:</strong> Our vision Lorem ipsum..</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Services Section) -->
+<div class="container-fluid text-center">
+  <h2>SERVICES</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-off logo-small"></span>
+      <h4>POWER</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-heart logo-small"></span>
+      <h4>LOVE</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-lock logo-small"></span>
+      <h4>JOB DONE</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-leaf logo-small"></span>
+      <h4>GREEN</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-certificate logo-small"></span>
+      <h4>CERTIFIED</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-wrench logo-small"></span>
+      <h4 style="color:#303030;">HARD WORK</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Portfolio Section) -->
+<div class="container-fluid text-center bg-grey">
+  <h2>Portfolio</h2><br>
+  <h4>What we have created</h4>
+  <div class="row text-center">
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="paris.jpg" alt="Paris" width="400" height="300">
+        <p><strong>Paris</strong></p>
+        <p>Yes, we built Paris</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="newyork.jpg" alt="New York" width="400" height="300">
+        <p><strong>New York</strong></p>
+        <p>We built New York</p>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="thumbnail">
+        <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
+        <p><strong>San Francisco</strong></p>
+        <p>Yes, San Fran is ours</p>
+      </div>
+    </div>
+  </div>
+
+  <h2>What our customers say</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4>"This company is the best. I am so happy with the result!"<br><span style="font-style:normal;">Michael Roe, Vice President, Comment Box</span></h4>
+      </div>
+      <div class="item">
+        <h4>"One word... WOW!!"<br><span style="font-style:normal;">John Doe, Salesman, Rep Inc</span></h4>
+      </div>
+      <div class="item">
+        <h4>"Could I... BE any more happy with this company?"<br><span style="font-style:normal;">Chandler Bing, Actor, FriendsAlot</span></h4>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+<script>
+$(document).ready(function(){
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+  
+	$( "#slider" ).slider();
+	$( "#location-type").selectmenu();
+  
+  
+});
+
+// old version
+// function loadMap(){
+	// var map = new GMap2(document.getElementById("map"));
+	// map.addControl(new GLargeMapControl());
+	// map.addControl(new GMapTypeControl());
+	// //set map center (vienna)
+	// map.setCenter(new GLatLng(48.1985912972919, 16.367568969726562), 12); 
+	// GEvent.addListener(map, "click", function(overlay, point){
+		// map.clearOverlays();
+		// if (point) {
+			// map.addOverlay(new GMarker(point));
+			// map.panTo(point);
+			// msg = "Latitude: "+point.lat()+"<br />"+"Longitude: "+point.lng();
+			// document.getElementById("mypoint").innerHTML = msg;
+			// document.getElementById("id_map_lat").value = point.lat(); //models field name 
+			// document.getElementById("id_map_lon").value = point.lng(); //models field name
+		// }
+	// });
+// }
+/*
+ Zooms:
+ 5: Landmass/continent
+10: City
+15: Streets
+ * */
+var map;
+var marker;
+
+// Adds a marker to the map.
+function addMarker(location) {
+  // Add the marker at the clicked location, and add the next-available label
+  // from the array of alphabetical characters.
+  var new_marker = new google.maps.Marker({
+    position: location,
+    //label: labels[labelIndex++ % labels.length],
+    map: map
+  });
+  return new_marker;
+}
+
+function initMap() {
+	var myLatLng = {lat: -34.397, lng: 150.644};
+	map = new google.maps.Map(document.getElementById('map'), {
+	    center: myLatLng,
+	    disableDoubleClickZoom: true,
+	    zoom: 8
+	});
+	
+	marker = new google.maps.Marker({
+	    position: myLatLng,
+	    draggable: true,
+	    animation: google.maps.Animation.DROP,
+	    map: map
+	});
+  
+  	// alternatively:
+	// marker.setMap(map);
+	
+	google.maps.event.addListener(map, 'dblclick', function(event) {
+	    marker.setPosition(event.latLng, map);
+	  });
+	  
+	
+	var search_input = document.getElementById("location");
+	
+	var autocomplete = new google.maps.places.Autocomplete(search_input, {types: ['geocode']});
+	autocomplete.bindTo('bounds', map);
+	
+	google.maps.event.addListener(autocomplete, 'place_changed', function() {
+		var place = autocomplete.getPlace();
+		// If the place has a geometry, then present it on a map.
+	    if (place.geometry.viewport) {
+	      	map.fitBounds(place.geometry.viewport);
+	    } else {
+	      	map.setCenter(place.geometry.location);
+	      	map.setZoom(17);  // Why 17? Because it looks good.
+	    }
+	    
+	    marker.setPosition(place.geometry.location);
+	});
+	
+	// Add circle overlay and bind to marker
+	var circle = new google.maps.Circle({
+	  map: map,
+	  radius: 16093,    // 10 miles in metres
+	  strokeColor: '#FF0000',
+      strokeOpacity: 0.8,
+      strokeWeight: 1,
+      fillColor: '#FF0000',
+      fillOpacity: 0.35,
+	});
+	circle.bindTo('center', marker, 'position');
+ }
+</script>
+
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRJwXT3LpIpWc2vS8Pi3Hlru474j4RuK4&libraries=places&callback=initMap"></script>
+</body>
+</html>
