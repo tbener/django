@@ -1,3 +1,2 @@
-from alerts import *
-from fma.models.events import *
-from geo import * 
+from .alerts import *
+from .events import *

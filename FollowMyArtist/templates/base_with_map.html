@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+
+
+
+{% block footerscript %}
+	<script src="{% static "fma/js/googlemap.js" %}"></script>
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key={{ GOOGLE_KEY }}&libraries=places&callback=initMap"></script>
+{% endblock %}

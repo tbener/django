@@ -1,0 +1,152 @@
+{% extends "base_with_map.html" %}
+{% load staticfiles %}
+
+{% block content %}
+<form method="post" id="id_artist-form" class="artist-form">{% csrf_token %}
+	
+<div class="container-fluid">
+	<div class="form-inline artist">
+		<h2>Find Your Artist</h2>
+		<input type="text" id="artist" class="form-control" size="30" placeholder="Artist Name"/>
+		<button id="btn-artist" class="btn btn-info ">Check</button>
+	</div>
+	<div id="artist-info" class="form-inline">
+		<p></p> <button id="btn-add-alert" class="btn btn-success ">Add alert</button>
+	</div>
+  
+</div>
+</form>
+
+	
+
+<div class="container-fluid bg-grey">
+	
+	<div class="row">
+		<div class="col-sm-6">
+			<ul>
+			{% for artist in artists %}
+				<li>{{ artist.name }} - {{ artist.short_description }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+		
+		
+		<div class="col-sm-6">
+			MAP
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6">
+			<ul>
+			{% for alert in alerts %}
+				<li>{{ alert }} - {{ alert.short_description }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+		
+		<div class="col-sm-6">
+			MAP
+		</div>
+	</div>
+</div>
+
+<form method="post" id="id_alert-form" class="alert-form">{% csrf_token %}
+
+<div class="container-fluid bg-grey">
+		<div class="row" >
+			<div class="col-sm-6">
+				<div class="row form-row">
+					<div class="col-sm-12">
+						{{ form_location.place }}
+						{{ form_location.lat }}{{ form_location.lng }}
+					</div>
+				</div>
+				<div class="row form-row">
+					<div class="col-sm-6">
+						<div class="control-group">
+							<div class="controls">
+								{{ form_alert.alert_type.label_tag }}
+								{{ form_alert.alert_type }}
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-sm-4">
+								<div id="slider"></div>
+					</div>
+					<div class="col-sm-2">
+						{{ form_alert.distance }}
+					</div>
+				</div>
+				<div class="row form-row">
+					<div class="col-sm-12">
+						<button id="id_btn_add-alert" type="button" class="btn btn-primary btn-lg">Add</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div id="map" style="height: 400px;"></div>
+			</div>
+		</div>
+</div>
+
+
+</form>
+{% endblock %}
+
+{% block footerscript %}
+{{ block.super }}
+<script src="{% static "fma/js/ajax.js" %}"></script>
+
+<script>
+
+var artistName = "";
+var artistId = -1;
+
+$("#id_artist-form").on('submit', function(event){
+	    event.preventDefault();
+	    getArtist();
+	});
+	
+function getArtist(){
+	$("#artist-info>p").text("");
+	$.ajax({
+	        url: '/get_artist/',
+	        type: 'POST',
+	        dataType: "json",
+	        data: {"artist_name": $("input#artist").val() },
+	        cache: false,
+	        success: function(data, textStatus, jqXHR)
+	        {
+	        	
+	            if(typeof data.error === 'undefined')
+	            {
+                	 $("#artist-info>p").text(data.name);
+                	 artistName = data.name;
+                	 artistId = data.id;
+	            }
+	            else
+	            {
+	                // Handle errors 
+	                console.log('ERRORS: ' + data.error);
+	                //$("#validate_result").text(data.error);
+	                alert(data.error);
+	            }
+	        },
+	        error: function(xhr, textStatus, errorThrown)
+	        {
+	            // Handle errors 
+	            console.log('ERRORS: ' + xhr.responseText + ' - ' + errorThrown);
+	            alert('Server error!');
+	        }
+	    });
+}
+
+
+
+</script>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+.jumbotron {
+      background-color: #f4511e;
+      color: #fff;
+      padding: 100px 25px;
+}
+
+.container-fluid {
+      padding: 30px 100px;
+}
+
+.bg-grey {
+      background-color: #f6f6f6;
+}
+
+.form-row{
+	padding: 20px 60px;
+}

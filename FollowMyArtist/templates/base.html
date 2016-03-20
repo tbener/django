@@ -1,0 +1,54 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+	  <title>Follow My Artist</title>
+	  <meta charset="utf-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	  
+	  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+	  
+	  <link rel="stylesheet" type="text/css" href="{% static 'fma/css/style.css' %}" />
+	  
+	  {% block extrahead %}
+	  
+	  {% endblock %}
+  	
+
+</head>
+<body>
+
+	<div class="jumbotron row">
+		<div class="col-sm-3">
+			
+		</div>
+		<div class=" text-center col-sm-6">
+		  <h1>Demo site</h1> 
+		  <p>Get notified when the artist you love comes near by</p> 
+		</div>
+		<div class="col-sm-3 text-right text-top">
+			{% if user and not user.is_anonymous %}
+				{{ user.get_full_name }}
+				<a href="{% url 'auth:logout' %}?next={{ request.path }}">Logout</a>
+			{% else %}
+				<a href="{% url 'social:begin' 'google-oauth2' %}?next={{ request.path }}">Login with Google</a>
+			{% endif %}
+		</div>
+	</div>
+
+	{% block content %}
+	
+	
+	{% endblock %}
+
+	{% block footerscript %}
+	{% endblock %}
+
+</body>
+</html>

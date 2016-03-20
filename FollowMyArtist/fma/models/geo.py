@@ -11,7 +11,7 @@ class Location(models.Model):
     lat         = models.FloatField(_('Latitude'), blank=True, null=True)
     lng         = models.FloatField(_('Longitude'), blank=True, null=True)
     
-    def __unicode__(self):
+    def __str__(self):
         return self.place or '({0}, {1})'.format(self.lat, self.lng)
     
     class Meta:

@@ -10,10 +10,11 @@ from .models.geo import Location
 from fma import fields as fma
 from django.forms.models import BaseInlineFormSet
 
-class LocationFormSet(BaseInlineFormSet):
+class LocationForm(forms.ModelForm):
     
     class Meta:
         model = Location
+        fields = ['place', 'lat', 'lng']
         widgets = {'place' : forms.TextInput(attrs = {'class': 'form-control'}),
                    'lat' : forms.HiddenInput(),
                    'lng' : forms.HiddenInput(),}
@@ -22,7 +23,7 @@ class AlertForm(forms.ModelForm):
     
     class Meta:
         model = AlertDefinition
-        fields = ['alert_type', 'distance']
+        fields = ['name', 'alert_type', 'distance']
         widgets = {'distance' : forms.TextInput(attrs = {'class': 'form-control'})}
         
 
