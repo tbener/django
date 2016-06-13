@@ -8,10 +8,9 @@ from django.db import models
 from .geo import Location
 from .artists import Artist
 
-class Event(models.Model):
+class Event(Location):
     name        = models.CharField(max_length=100)
     date        = models.DateTimeField()
-    location    = models.ForeignKey(Location, null=False)
     artists     = models.ManyToManyField(Artist)
     
     def __str__(self):

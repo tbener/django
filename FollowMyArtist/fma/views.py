@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from FollowMyArtist import settings
 from .forms import AlertForm, LocationForm
 from django.http.response import HttpResponse
@@ -18,9 +18,23 @@ def user_main_view(request):
     else:
         alerts = None
         artists = None
+    form_artist = modelform_factory(Artist, fields=['name'])
     form_alert = AlertForm()
     form_location = LocationForm()
-    return render(request, 'user_main.html', { 'GOOGLE_KEY': settings.GOOGLE_KEY, 'request': request, 'user': request.user, 'artists': artists, 'alerts': alerts, 'form_alert': form_alert, 'form_location': form_location})
+    return render(request, 'user_main.html', { 'GOOGLE_KEY': settings.GOOGLE_KEY, 'request': request, 'user': request.user, 
+                                              'artists': artists, 'alerts': alerts, 'form_alert': form_alert, 
+                                              'form_location': form_location, 'form_artist': form_artist})
+
+def add_alert(request):
+    user = request.user
+    
+    form_artist = modelform_factory(Artist, fields=['name'])
+    form_alert = AlertForm()
+    form_location = LocationForm()
+    return render(request, 'add_alert.html', { 'GOOGLE_KEY': settings.GOOGLE_KEY, 'request': request, 'user': user, 
+                                              'form_alert': form_alert, 
+                                              'form_location': form_location, 'form_artist': form_artist})
+
 
 def home(request):
     form_loc = LocationForm()
@@ -55,7 +69,10 @@ def get_artist(request):
     mimetype = 'application/json'
     return HttpResponse(data, mimetype)
 
-def add_alert(request):
+
+    
+
+def add_alert_old(request):
     if request.method == 'POST':
         data = request.POST
          

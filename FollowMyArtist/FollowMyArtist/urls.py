@@ -21,9 +21,9 @@ urlpatterns = [
     url('', include('social.apps.django_app.urls', namespace='social')),
     url('', include('django.contrib.auth.urls', namespace='auth')),
     
-    url(r'^$', views.user_main_view),
+    url(r'^$', views.user_main_view, name='main'),
     url(r'^test/', views.test),
-    url(r'^add_alert/', views.add_alert),
+    url(r'^add-alert/', views.add_alert),
     url(r'^admin/', admin.site.urls),
     url(r'^get_artist/', views.get_artist),
     

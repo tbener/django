@@ -2,7 +2,7 @@
 {% load staticfiles %}
 
 {% block content %}
-<form method="post" id="id_artist-form" class="artist-form">{% csrf_token %}
+<form method="post" action="/add-alert/" id="id_alert-form" class="alert-form">{% csrf_token %}
 	
 <div class="container-fluid">
 	<div class="form-inline artist">
@@ -10,50 +10,8 @@
 		<input type="text" id="artist" class="form-control" size="30" placeholder="Artist Name"/>
 		<button id="btn-artist" class="btn btn-info ">Check</button>
 	</div>
-	<div id="artist-info" class="form-inline">
-		<p></p> <button id="btn-add-alert" class="btn btn-success">Add alert</button>
-	</div>
-  
-</div>
-</form>
-
 	
-
-<div class="container-fluid bg-grey">
-	
-	<div class="row">
-		<div class="col-sm-6">
-			<ul>
-			{% for artist in artists %}
-				<li>{{ artist.name }} - {{ artist.short_description }}</li>
-			{% endfor %}
-			</ul>
-		</div>
-		
-		
-		<div class="col-sm-6">
-			MAP
-		</div>
-	</div>
 </div>
-
-<div class="container-fluid">
-	<div class="row">
-		<div class="col-sm-6">
-			<ul>
-			{% for alert in alerts %}
-				<li>{{ alert }} - {{ alert.short_description }}</li>
-			{% endfor %}
-			</ul>
-		</div>
-		
-		<div class="col-sm-6">
-			MAP
-		</div>
-	</div>
-</div>
-
-<form method="post" action="/add-alert/" id="id_alert-form" class="alert-form">{% csrf_token %}
 
 <div class="container-fluid bg-grey">
 		<div class="row" >

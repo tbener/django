@@ -6,6 +6,11 @@ Created on Mar 6, 2016
 
 from django.db import models
 from django.utils.translation import ungettext
+from .database_storage import DatabaseStorage
+
+DBS_OPTIONS = {
+    'table':'fma_files', 
+    'base_url':'/fma/files/'}
 
 class Artist(models.Model):
     
